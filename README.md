@@ -5,8 +5,8 @@ PC1: analysis of truss structure.
 
 PC2: 
  + Euler-Bernoulli beam under affine load;
- + Euler-Bernoulli and Timoshenko beams stiffness using FE assembly and Castigliano theorem
+ + Euler-Bernoulli and Timoshenko beams stiffness using FE assembly and Castigliano theorem.
 
-PC3: quadratic Lagrange elements for truss structures
+PC3: quadratic Lagrange elements for truss structures.
 
-PC4: analysis of a truss frame, illustration of linear system ill-conditioning
+PC4: analysis of a truss frame, illustration of linear system ill-conditioning.
