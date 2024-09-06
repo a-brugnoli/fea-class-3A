@@ -53,7 +53,7 @@ dofs_no_bcs = list(set(dofs) - set(dofs_bcs))
 K_no_bcs = K[dofs_no_bcs, :][:, dofs_no_bcs]
 K_red = csr_matrix(K_no_bcs)
 
-f = np.zeros((n_dofs, ))
+f = np.zeros(n_dofs)
 
 for node, force in forces.items():
     dof = 2*node
