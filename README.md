@@ -10,3 +10,5 @@ PC2:
 PC3: quadratic Lagrange elements for truss structures.
 
 PC4: analysis of a truss frame, illustration of linear system ill-conditioning.
+
+Most of the content has been extracted from: Imbert, J. F. (1995). Analyse des structures par éléments finis, éd. Cépaduès. 506p.
