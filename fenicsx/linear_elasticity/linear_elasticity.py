@@ -1,9 +1,4 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# # Implementation
 # Author: Jørgen S. Dokken
-
 
 import pyvista
 from dolfinx import mesh, fem, plot, io, default_scalar_type

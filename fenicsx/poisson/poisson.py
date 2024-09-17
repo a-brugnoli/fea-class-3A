@@ -1,8 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# # Implementation
-# 
 # Author: Jørgen Schartum Dokken
 # 
 # This implementation is an adaptation of the work in {cite}`FenicsTutorial` to DOLFINx.

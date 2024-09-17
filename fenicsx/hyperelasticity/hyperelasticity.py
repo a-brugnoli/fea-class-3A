@@ -1,7 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# # Hyperelasticity
 # Author: Jørgen S. Dokken and Garth N. Wells
 # 
 # This section shows how to solve the hyperelasticity problem for deformation of a beam.
@@ -10,6 +6,7 @@
 # 
 # We start by importing DOLFINx and some additional dependencies.
 # Then, we create a slender cantilever consisting of hexahedral elements and create the function space `V` for our unknown.
+
 from dolfinx import log, default_scalar_type
 from dolfinx.fem.petsc import NonlinearProblem
 from dolfinx.nls.petsc import NewtonSolver
@@ -25,7 +22,6 @@ V = fem.functionspace(domain, ("Lagrange", 2, (domain.geometry.dim, )))
 
 def left(x):
     return np.isclose(x[0], 0)
-
 
 def right(x):
     return np.isclose(x[0], L)
@@ -52,7 +48,7 @@ T = fem.Constant(domain, default_scalar_type((0, 0, 0)))
 v = ufl.TestFunction(V)
 u = fem.Function(V)
 
-# Spatial dimension
+# Spatial dimensiona
 d = len(u)
 # Identity tensor
 I = ufl.variable(ufl.Identity(d))
@@ -73,7 +69,6 @@ lmbda = fem.Constant(domain, E * nu / ((1 + nu) * (1 - 2 * nu)))
 psi = (mu / 2) * (Ic - 3) - mu * ufl.ln(J) + (lmbda / 2) * (ufl.ln(J))**2
 # First Piola Stress tensor
 P = ufl.diff(psi, F)
-
 
 metadata = {"quadrature_degree": 4}
 ds = ufl.Measure('ds', domain=domain, subdomain_data=facet_tag, metadata=metadata)
