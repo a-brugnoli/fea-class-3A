@@ -58,9 +58,9 @@ if domain.comm.rank == 0:
 from dolfinx import io
 from pathlib import Path
 current_directory = Path(__file__).resolve().parent
-results_folder = Path(str(current_directory) + "/results_poisson")
+results_folder = Path(str(current_directory) + "/results")
 results_folder.mkdir(exist_ok=True, parents=True)
-filename = results_folder / "poisson"
+filename = results_folder / "solution"
 with io.VTXWriter(domain.comm, filename.with_suffix(".bp"), [uh]) as vtx:
     vtx.write(0.0)
 with io.XDMFFile(domain.comm, filename.with_suffix(".xdmf"), "w") as xdmf:

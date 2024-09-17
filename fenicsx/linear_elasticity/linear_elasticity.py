@@ -69,9 +69,9 @@ stresses.interpolate(stress_expr)
 from dolfinx import io
 from pathlib import Path
 current_directory = Path(__file__).resolve().parent
-results_folder = Path(str(current_directory) + "/results_linear_elasticity")
+results_folder = Path(current_directory / "results")
 results_folder.mkdir(exist_ok=True, parents=True)
-filename_disp = "displacement"
+filename_disp = results_folder / "displacement"
 with io.VTXWriter(domain.comm, filename_disp.with_suffix(".bp"), [uh]) as vtx:
     vtx.write(0.0)
 with io.XDMFFile(domain.comm, filename_disp.with_suffix(".xdmf"), "w") as xdmf:
