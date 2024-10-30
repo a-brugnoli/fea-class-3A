@@ -13,7 +13,7 @@ import pyvista
 
 def topopt(nelx, nely, volfrac, penal, rmin):
 
-    L, H = nelx, nely
+    L, H = 60, 20
     
     domain = create_rectangle(MPI.COMM_WORLD, [np.array([0, 0]), np.array([L, H])],
                          [nelx, nely], cell_type=CellType.quadrilateral)
@@ -169,7 +169,9 @@ def topopt(nelx, nely, volfrac, penal, rmin):
 
 # The real main driver
 if __name__ == "__main__":
+
+    n_elem = 60
     log.set_log_level(log.LogLevel.WARNING)
-    topopt(nelx=60, nely=20, volfrac=0.5, penal=3.0, rmin=2.0)
+    topopt(nelx=3*n_elem, nely=n_elem, volfrac=0.5, penal=3.0, rmin=2.0)
 
     # Test 55 lines works
