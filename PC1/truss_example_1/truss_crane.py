@@ -3,9 +3,10 @@ author: Andrea Brugnoli
 
 Python solution to the exercise proposed in
 https://people.duke.edu/~hpgavin/cee421/truss-method.pdf
+
 '''
 
-from PC1.example_truss.data import EA, connectivity_table, coordinates, forces, nodes_bcs
+from PC1.truss_example_1.data import EA, connectivity_table, coordinates, forces, nodes_bcs
 import numpy as np
 from src.element_stiffness import truss_2d_element
 from scipy.sparse import lil_matrix, csr_matrix
@@ -27,7 +28,7 @@ for ii in range(n_elements):
     
     left_node, right_node = connectivity_table[ii]
 
-    K_element, theta_element = truss_2d_element(coordinates[left_node], 
+    K_element, theta_element, _ = truss_2d_element(coordinates[left_node], 
                                 coordinates[right_node], 
                                 EA)
     
@@ -57,11 +58,9 @@ f = np.zeros(n_dofs)
 
 for node, force in forces.items():
     dof = 2*node
-    print(force)
     f[dof:dof+2] = force
 
 f_red = f[dofs_no_bcs]
-print(f_red)
 q_red = spsolve(K_red, f_red)
 
-print(f"Displacement solution: \n {q_red} \n")
+print(f"Displacement solution in [inches]: \n {q_red} \n")

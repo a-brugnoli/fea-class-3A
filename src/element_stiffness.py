@@ -16,26 +16,30 @@ def truss_2d_element(coord1, coord2, EA):
 
     Returns
     -------
-    K : numpy.ndarray
+    K : numpy.ndarray of size (4, 4)
         stiffness matrix in the global reference frame
+    theta : float
+        angle of the bar in radians
+    length : float
+        length of the bar
 
     """
 
-    L = np.linalg.norm(coord2 - coord1) # length of the bar
+    length = np.linalg.norm(coord2 - coord1) # length of the bar
 
     x1, y1 = coord1
     x2, y2 = coord2
     
-    c = ( x2 - x1 ) / L # cosine of bar angle
-    s = ( y2 - y1 ) / L # sine of bar angle
+    c = ( x2 - x1 ) / length # cosine of bar angle
+    s = ( y2 - y1 ) / length # sine of bar angle
 
     theta = np.arctan2(s, c)
 
-    K = EA/L * np.array([[c**2, c*s, - c**2, - c*s],
+    K = EA/length * np.array([[c**2, c*s, - c**2, - c*s],
                         [c * s, s**2,  - c*s, - s**2],
                         [-c**2, - c*s, c**2, c*s],
                         [ - c*s, - s**2, c*s, s**2 ] ] )
-    return K, theta     
+    return K, theta, length    
     
 
 
@@ -56,9 +60,12 @@ def beam_2d_element(coord1, coord2, EA, EI):
 
     Returns
     -------
-    K : numpy.ndarray
+    K : numpy.ndarray of size (6, 6)
         stiffness matrix in the global reference frame
-
+    theta : float
+        angle of the bar in radians
+    length : float
+        length of the bar
     """
 
     L = np.linalg.norm(coord2 - coord1) # length of the bar
@@ -87,4 +94,4 @@ def beam_2d_element(coord1, coord2, EA, EI):
     
     K = T_gl_to_loc.T @ K_local @ T_gl_to_loc
 
-    return K, theta      
+    return K, theta, L      
