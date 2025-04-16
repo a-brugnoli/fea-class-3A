@@ -1,6 +1,6 @@
 import numpy as np
 
-def truss_2d_element(coord1, coord2, EA):
+def stiffness_truss_2d_element(coord1, coord2, EA):
     """
     Compute the element stiffness matrix for a 2D truss bar in global coordinates
     Function translated to python from the MATLAB code in https://people.duke.edu/~hpgavin/cee421/truss-method.pdf
@@ -43,7 +43,7 @@ def truss_2d_element(coord1, coord2, EA):
     
 
 
-def beam_2d_element(coord1, coord2, EA, EI):
+def stiffness_beam_2d_element(coord1, coord2, EA, EI):
     """
     Compute the element stiffness matrix for a 2D beam in global coordinates
     

@@ -1,7 +1,6 @@
 import matplotlib.pyplot as plt
 import numpy as np
-from src.plot_config import configure_matplotlib
-
+from src.postprocessing.plot_config import configure_matplotlib
 configure_matplotlib()
 
 
