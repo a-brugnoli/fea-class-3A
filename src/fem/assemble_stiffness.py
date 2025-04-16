@@ -41,7 +41,7 @@ def assemble_stiffness_truss_2d(coordinates, connectivity_table, EA):
         if np.isscalar(EA):
             EA_elem = EA
         else:
-            assert EA.shape[0] == n_elements and EA.shape[1] == 1
+            assert len(EA) == n_elements
             EA_elem = EA[ii] 
 
         K_ii, angle_ii, length_ii = stiffness_truss_2d_element(coordinates[left_node], coordinates[right_node], EA_elem)

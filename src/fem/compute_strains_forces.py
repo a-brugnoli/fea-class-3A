@@ -59,7 +59,7 @@ def compute_strains_forces_truss_2d(coordinates, connectivity_table, displacemen
         if np.isscalar(EA):
             axial_forces[ii] = EA * axial_strains[ii]
         else:
-            assert EA.shape[0] == n_elements and EA.shape[1] == 1
+            assert len(EA) == n_elements 
             axial_forces[ii] = EA[ii] * axial_strains[ii]
 
         # print(f"Local axial force element {ii+1}: \n {axial_forces[ii]}")
