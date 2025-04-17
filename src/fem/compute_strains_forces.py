@@ -41,27 +41,25 @@ def compute_strains_forces_truss_2d(coordinates, connectivity_table, displacemen
         coord1 = coordinates[left_node]
         coord2 = coordinates[right_node]
 
-        L = np.linalg.norm(coord2 - coord1) # length of the bar
+        length = np.linalg.norm(coord2 - coord1) # length of the bar
 
         x1, y1 = coord1
         x2, y2 = coord2
         
-        c = ( x2 - x1 ) / L # cosine of bar angle
-        s = ( y2 - y1 ) / L # sine of bar angle
+        c = ( x2 - x1 ) / length # cosine of bar angle
+        s = ( y2 - y1 ) / length # sine of bar angle
 
         theta = np.arctan2(s, c)
 
         u_loc_left = np.cos(theta) * u_gl_left[0] + np.sin(theta) * u_gl_left[1]
         u_loc_right = np.cos(theta) * u_gl_right[0] + np.sin(theta) * u_gl_right[1]
 
-        axial_strains[ii] = (u_loc_right - u_loc_left) / L
+        axial_strains[ii] = (u_loc_right - u_loc_left) / length
 
         if np.isscalar(EA):
             axial_forces[ii] = EA * axial_strains[ii]
         else:
             assert len(EA) == n_elements 
             axial_forces[ii] = EA[ii] * axial_strains[ii]
-
-        # print(f"Local axial force element {ii+1}: \n {axial_forces[ii]}")
 
     return axial_strains, axial_forces

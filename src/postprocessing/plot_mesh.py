@@ -4,7 +4,7 @@ from src.postprocessing.plot_config import configure_matplotlib
 configure_matplotlib()
 
 
-def plot_truss_structure(coordinates, connectivity_table, ax=None, **options):
+def plot_truss_structure_2d(coordinates, connectivity_table, ax=None, **options):
     """
     Plot the truss structure based on the coordinates and connectivity table.
     
@@ -132,7 +132,7 @@ if __name__ == "__main__":
     fig, ax = plt.subplots(figsize=(12, 8))
     
     # Plot the original structure with solid blue lines
-    ax = plot_truss_structure(
+    ax = plot_truss_structure_2d(
         coordinates_original, 
         connectivity_table, 
         ax=ax,
@@ -148,7 +148,7 @@ if __name__ == "__main__":
     
     # Plot the deformed structure with dashed red lines
     # Only show element numbers (not node numbers) for clarity
-    ax = plot_truss_structure(
+    ax = plot_truss_structure_2d(
         coordinates_deformed, 
         connectivity_table, 
         ax=ax,
