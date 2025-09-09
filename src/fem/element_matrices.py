@@ -70,10 +70,10 @@ def mass_bar_2d_element(coord1, coord2, rhoA, lumped = False):
         M_local = rhoA /(6*length) * np.array([[2, 1], 
                                                [1, 2]])
 
-    Rot_matrix = np.array([[c, s, 0, 0],
+    P_matrix = np.array([[c, s, 0, 0],
                            [0, 0, c, s]])
 
-    M = Rot_matrix.T @ M_local @ Rot_matrix
+    M = P_matrix.T @ M_local @ P_matrix
     
     return M
 
